@@ -47,7 +47,7 @@ public class task1 {
     List<Integer> multiples = new ArrayList<>();
 
     for (int i = start; i <= end; i++) {
-      if (i % num  == 0) {
+      if (i % num == 0) {
         multiples.add(i);
       }
     }
