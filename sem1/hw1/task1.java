@@ -11,27 +11,26 @@ package sem1.hw1;
   int i = new Random().nextInt(k); //это кидалка случайных чисел!)
  */
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class task1 {
   public static void main(String[] args) {
     int i = getRandomNumber();
     int n = getBit(i);
-    List<Integer> m1 = findMultiples(n, i, Short.MAX_VALUE);
-    List<Integer> m2 = findNonMultiples(n, Short.MIN_VALUE, i);
+    int[] m1 = findMultiples(n, i, Short.MAX_VALUE);
+    int[] m2 = findNonMultiples(n, Short.MIN_VALUE, i);
 
     System.out.println("Random number: " + i);
     System.out.println("Most significant bit: " + n);
-    System.out.println("Multiples of n in the range [i, Short.MAX_VALUE]: ");
+    System.out.println("Multiples of n in the range [i, Short.MAX_VALUE]:");
     printArray(m1);
-    System.out.println("Non-multiples of n in the range [Short.MIN_VALUE, i]: ");
+    System.out.println("Non-multiples of n in the range [Short.MIN_VALUE, i]:");
     printArray(m2);
   }
 
   public static int getRandomNumber() {
-    return new Random().nextInt(2000);
+    Random rand = new Random();
+    return rand.nextInt(2001);
   }
 
   public static int getBit(int number) {
@@ -43,32 +42,36 @@ public class task1 {
     return msb;
   }
 
-  public static List<Integer> findMultiples(int num, int start, int end) {
-    List<Integer> multiples = new ArrayList<>();
+  public static int[] findMultiples(int num, int start, int end) {
+    int[] multiples = new int[(end - start) / num + 1];
+    int index = 0;
 
     for (int i = start; i <= end; i++) {
       if (i % num == 0) {
-        multiples.add(i);
+        multiples[index] = i;
+        index++;
       }
     }
 
     return multiples;
   }
 
-  public static List<Integer> findNonMultiples(int num, int start, int end) {
-    List<Integer> nonMultiples = new ArrayList<>();
+  public static int[] findNonMultiples(int num, int start, int end) {
+    int[] nonMultiples = new int[Math.abs(start - end) / num + 1];
+    int index = 0;
 
     for (int i = start; i <= end; i++) {
       if (i % num != 0) {
-        nonMultiples.add(i);
+        nonMultiples[index] = i;
+        index++;
       }
     }
 
     return nonMultiples;
   }
 
-  public static void printArray(List<Integer> list) {
-    for (int num : list) {
+  public static void printArray(int[] arr) {
+    for (int num : arr) {
       System.out.print(num + " ");
     }
     System.out.println();
