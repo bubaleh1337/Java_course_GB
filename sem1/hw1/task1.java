@@ -11,35 +11,35 @@ package sem1.hw1;
   int i = new Random().nextInt(k); //это кидалка случайных чисел!)
  */
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class task1 {
   public static void main(String[] args) {
-    int i = getRandomNumber();
-    int n = getBit(i);
-    int[] m1 = findMultiples(n, i, Short.MAX_VALUE);
-    int[] m2 = findNonMultiples(n, Short.MIN_VALUE, i);
-
+    int i = getRandomNumber(2000);
     System.out.println("Random number: " + i);
+
+    int n = getBit(i);
     System.out.println("Most significant bit: " + n);
-    System.out.println("Multiples of n in the range [i, Short.MAX_VALUE]:");
-    printArray(m1);
-    System.out.println("Non-multiples of n in the range [Short.MIN_VALUE, i]:");
-    printArray(m2);
+
+    int[] m1 = findMultiples(n, i, Short.MAX_VALUE);
+    System.out.println("Multiples of n in the range [i, Short.MAX_VALUE]:" + Arrays.toString(m1));
+
+    int[] m2 = findNonMultiples(n, Short.MIN_VALUE, i);
+    System.out.println("Non-multiples of n in the range [Short.MIN_VALUE, i]:" + Arrays.toString(m2));
   }
 
-  public static int getRandomNumber() {
-    Random rand = new Random();
-    return rand.nextInt(2001);
+  public static int getRandomNumber(int num) {
+    return new Random().nextInt(num);
   }
 
   public static int getBit(int number) {
-    int msb = 0;
+    int max_bit = 0;
     while (number > 0) {
       number = number >> 1;
-      msb++;
+      max_bit++;
     }
-    return msb;
+    return max_bit;
   }
 
   public static int[] findMultiples(int num, int start, int end) {
@@ -52,7 +52,6 @@ public class task1 {
         index++;
       }
     }
-
     return multiples;
   }
 
@@ -66,14 +65,6 @@ public class task1 {
         index++;
       }
     }
-
     return nonMultiples;
-  }
-
-  public static void printArray(int[] arr) {
-    for (int num : arr) {
-      System.out.print(num + " ");
-    }
-    System.out.println();
   }
 }
