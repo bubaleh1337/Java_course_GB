@@ -13,7 +13,6 @@ package sem1.hw1;
   int i = new Random().nextInt(k); //это кидалка случайных чисел!)
  */
 
-
 import java.util.Random;
 
 public class task1 {
@@ -66,24 +65,14 @@ public class task1 {
     for (int i = num; i > min; i--) {
       try {
         if (bit % i != 0) {
-        m2[index] = i;
-        index++;
-      }
+          m2[index] = i;
+          index++;
+        }
       } catch (Exception e) {
-        
+
       }
-      
+
     }
-
-    // int[] nonMultiples = new int[Math.abs(start - end) / num + 1];
-    // int index = 0;
-
-    // for (int i = start; i <= end; i++) {
-    // if (i % num != 0) {
-    // nonMultiples[index] = i;
-    // index++;
-    // }
-    // }
     return m2;
   }
 
