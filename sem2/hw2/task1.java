@@ -39,16 +39,27 @@ public class task1 {
     String head = "select * from students where ";
     StringBuilder sb = new StringBuilder(head);
     String words = "name: , country: , city: , age: ";
-    for (int i = 0; i < words.length(); i++) {
-      prompt(i, words.substring(i).toString(), sb);
-    }
+    // for (int i = 0; i < 4; i++) {
+    // try {
+    // prompt(i, words.substring(i).toString(), sb);
+    // } catch (Exception e) {
+
+    // }
+
+    // }
+    System.out.println(prompt(words, sb));
+
   }
 
-  public static StringBuilder prompt(int count, String words, StringBuilder sb) {
+  public static StringBuilder prompt(String words, StringBuilder sb) {
     Scanner scanner = new Scanner(System.in);
-    addParametr(count, words, sb);
-    String word = scanner.nextLine();
-    sb.append(word);
+    for (int i = 0; i < 4; i++) {
+
+      addParametr(i, words, sb);
+      String word = scanner.nextLine();
+      sb.append(word);
+    }
+
     scanner.close();
     return sb;
   }
@@ -57,19 +68,19 @@ public class task1 {
     switch (count) {
       case 0:
         System.out.println("Enter a name: ");
-        sb.append(words.charAt(0));
+        sb.append(words.charAt(0) + " ");
         break;
       case 1:
         System.out.println("Enter a country: ");
-        sb.append(words.charAt(1));
+        sb.append(words.charAt(1) + " ");
         break;
       case 2:
         System.out.println("Enter a city: ");
-        sb.append(words.charAt(2));
+        sb.append(words.charAt(2) + " ");
         break;
       case 3:
         System.out.println("Enter a age: ");
-        sb.append(words.charAt(3));
+        sb.append(words.charAt(3) + " ");
         break;
       default:
         System.out.println("Something wrong. Try again.");
