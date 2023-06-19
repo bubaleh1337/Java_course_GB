@@ -1,5 +1,6 @@
 package sem2.hw2;
 
+import java.util.ArrayList;
 /*
 Дана строка "select * from students where ". 
 Сформируйте часть WHERE этого запроса, используя 
@@ -35,56 +36,49 @@ where name=Ivanov, country=Russia, city=Moscow
 import java.util.Scanner;
 
 public class task1 {
+  static Scanner scanner = new Scanner(System.in);
+
   public static void main(String[] args) {
     String head = "select * from students where ";
     StringBuilder sb = new StringBuilder(head);
-    String words = "name: , country: , city: , age: ";
-    // for (int i = 0; i < 4; i++) {
-    // try {
-    // prompt(i, words.substring(i).toString(), sb);
-    // } catch (Exception e) {
+    StringBuilder words = new StringBuilder("name: , country: , city: , age: ");
 
-    // }
-
-    // }
-    System.out.println(prompt(words, sb));
+    System.out.println(getSB(sb, words));
 
   }
 
-  public static StringBuilder prompt(String words, StringBuilder sb) {
-    Scanner scanner = new Scanner(System.in);
-    for (int i = 0; i < 4; i++) {
-
-      addParametr(i, words, sb);
-      String word = scanner.nextLine();
-      sb.append(word);
-    }
-
-    scanner.close();
-    return sb;
+  public static void prompt(StringBuilder sb, StringBuilder lst) {
+    sb.append(lst.toString());
+    System.out.println(sb);
   }
 
-  public static void addParametr(int count, String words, StringBuilder sb) {
+  public static void addParametr(int count) {
     switch (count) {
       case 0:
         System.out.println("Enter a name: ");
-        sb.append(words.charAt(0) + " ");
         break;
       case 1:
         System.out.println("Enter a country: ");
-        sb.append(words.charAt(1) + " ");
         break;
       case 2:
         System.out.println("Enter a city: ");
-        sb.append(words.charAt(2) + " ");
         break;
       case 3:
         System.out.println("Enter a age: ");
-        sb.append(words.charAt(3) + " ");
         break;
       default:
         System.out.println("Something wrong. Try again.");
         break;
     }
+  }
+
+  public static StringBuilder getSB(StringBuilder sb, StringBuilder words) {
+
+    for (int i = 0; i < 4; i++) {
+      addParametr(i);
+      String word = scanner.nextLine();
+      sb.append(word + " ");
+    }
+    return sb;
   }
 }
