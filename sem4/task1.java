@@ -72,6 +72,4 @@ public class task1 {
           .println(i.get(0) + " " + i.get(1).charAt(0) + ". " + i.get(2).charAt(0) + ". " + i.get(3) + " " + i.get(4));
     }
   }
-
-    
 }
