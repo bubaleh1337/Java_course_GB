@@ -1,6 +1,5 @@
 package sem2.hw2;
 
-import java.util.ArrayList;
 /*
 Дана строка "select * from students where ". 
 Сформируйте часть WHERE этого запроса, используя 

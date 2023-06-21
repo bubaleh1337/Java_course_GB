@@ -103,6 +103,7 @@ public class task1 {
   public static ArrayList<String> sortedByAge(ArrayList<ArrayList<String>> majorList) {
     ArrayList<String> sorted = new ArrayList<>();
     int[] age = new int[majorList.size()];
+    
     for (int i = 0; i < majorList.size(); i++) {
       String[] line = majorList.get(i).toString().split(" ");
       age[i] = (Integer.parseInt(line[2]));
