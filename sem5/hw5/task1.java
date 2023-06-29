@@ -28,7 +28,7 @@ public class task1 {
       if (name.equals("") || number_phone.equals(""))
         break;
 
-      // Проверяем, есть ли уже такое имя в телефонной книге
+      // Проверка на повторяющиеся имена с разными телефонами
       phoneBook = checkPB(phoneBook, name, number_phone);
     }
     // Сортировка по убыванию числа телефонов
